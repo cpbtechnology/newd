@@ -1,0 +1,53 @@
+/*
+ * basic.css
+ *
+ * Reset browser default styles, set up font sizing and basic color scheme
+ * and basic element styles.
+ */
+
+/* Eric Meyer's reset CSS */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline}:focus{outline:0}body{line-height:1;color:black;background:white}ol,ul{list-style:none}table{border-collapse:separate;border-spacing:0}caption,th,td{text-align:left;font-weight:normal}blockquote:before,blockquote:after,q:before,q:after{content:""}blockquote,q{quotes:""""}
+
+
+/* YUI Font CSS
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.1
+Px    %
+10    77
+11    85
+12    93
+13    100
+14    108
+15    116
+16    123.1
+17    131
+18    138.5
+19    146.5
+20    153.9
+21    161.6
+22    167
+23    174
+24    182
+25    189
+26    197
+*/
+body {font:13px/1.231 "Helvetica Neue", Helvetica, Arial, sans-serif;*font-size:small;*font:x-small;}table {font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
+
+body { background: #000; color: #afafaf; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-style: normal; }
+a { color: #f9b341; text-decoration: none; }
+a:hover { color: #ff1f1f; }
+
+/* Margin goes on the bottom */
+p, ul, ol, dl { margin-bottom: 1em; }
+p { color: #afafaf;}
+
+blockquote { margin: 2em 30px; }
+input, select { vertical-align: middle; }
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+
+#AccessibilityLinks { position: absolute; top: -9999px; }

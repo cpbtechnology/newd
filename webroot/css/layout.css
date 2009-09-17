@@ -1,0 +1,321 @@
+/* BEGIN: Global Structure */
+
+body { background: #000; padding-top: 12px; }
+
+#PageWrapper { width: 984px; margin: 0 auto 45px; background: #1e1e1e; }
+#LayoutWrapper { width: 959px; padding: 12px 12px 0; overflow: hidden; }
+
+div.Loader { display: none; }
+div.Loader span.overlay { width: 100%; height: 100%; position: fixed; top: 0; left: 0; background: #000; filter:alpha(opacity=40); opacity: 0.40; -moz-opacity:0.4; z-index: 10000;}
+div.Loader span.loader { height: 45px; width: 115px; position: absolute; top: -9999px; left: -9999px; background: url(/img/loader.gif) left bottom no-repeat transparent; z-index: 10001;}
+
+#LayoutWrapper h2 { height: 18px; margin: 4px 0 2px; overflow: hidden; text-indent: -9999px; background-image: url(/img/bkg.header-sprite.gif); background-repeat: no-repeat; font-size: 108%; line-height: 1; color:  #fff; }
+
+ul.Pagination { position: absolute; top: 9px; right: 3px; }
+ul.Pagination li { float: left; margin: 0 3px;}
+ul.Pagination li a { width: 12px; height: 12px; display: block; overflow: hidden; text-indent: -9999px; background-image: url(/img/bkg.header-sprite.gif); background-repeat: no-repeat; }
+ul.Pagination li.Next a { background-position: -146px -44px; }
+ul.Pagination li.Next a.disabled,
+ul.Pagination li.Next a.disabled:hover  { background-position: -190px -64px; }
+ul.Pagination li.Next a:hover { background-position: -258px -44px; }
+ul.Pagination li.Previous a { background-position: -164px -44px; }
+ul.Pagination li.Previous a.disabled,
+ul.Pagination li.Previous a.disabled:hover { background-position: -208px -64px; }
+ul.Pagination li.Previous a:hover { background-position: -258px -25px; }
+ul.Pagination li a.disabled { cursor: default; }
+
+/* END: Global Structure */
+
+/* BEGIN: Header and Site Navigation */
+
+#Header { position: relative; height: 47px; margin-bottom: 7px; width: 100%; overflow: hidden;}
+
+#Nav { margin: 0 0 7px 0; padding: 0 7px; height: 45px; position: absolute; left: 0; background: #141414; width: 100%;}
+#Nav li { height: 47px; width: 115px; float: left; line-height: 46px; font-size: 116%;}
+#Nav li a { width: 115px; height: 47px; margin-top: 0px; display: block; overflow: hidden; }
+
+/* END: Header and Site Navigation */
+
+
+/* BEGIN: Media Content Region */
+
+#Media { width: 100%; margin-bottom: -4px; overflow: hidden;}
+#Media div.Section {  height: 293px; position: relative; }
+
+#Media div.MediaContainer { height: 252px; overflow: hidden; padding: 3px; position: relative; }
+* html #Media div.MediaContainer { padding-left: 0; }
+#Media div.MediaContainer div.Overlay { height: 18px; width: 100%; display: block; position: absolute; bottom: 0; left: 0; background: url(/img/frg.generic-overlay.png) left bottom repeat-x; }
+* html #Media div.MediaContainer div.Overlay { display: none; }
+#Media div.MediaContainer ul { top: 7px; position: absolute; margin-bottom: 0; }
+#Media div.MediaContainer ul li { float: left; margin: 0 5px 2px; padding-bottom: 8px; background: url(/img/drop-shadow.png) bottom repeat-x; position: relative; }
+* html #Media div.MediaContainer ul li { background: none; }
+#Media div.MediaContainer ul li img { background: #3b3b3b; outline: none; display: block; border-right: 1px solid #c21625; overflow: hidden;}
+#Media div.MediaContainer ul li a span.overlay { background: url(/img/frg.thumbnail-overlay.png) left top repeat; display: block; position: absolute; top: 0; left: 0; z-index: 10; }
+#Media div.MediaContainer ul li a:hover span.overlay { filter:alpha(opacity=40); opacity: 0.4; -moz-opacity:0.40; }
+* html #Media div.MediaContainer ul li a span.overlay { display: none; }
+#Media div.MediaContainer ul li { float: left;  }
+
+#Player { width: 430px; margin: 0 205px 0 321px; position: relative; top: 1px;}
+#Player h2 { height: 21px; width: 39px; margin-bottom: 0px; margin-top: 0; background: transparent url(/img/bkg.header-video.png) 0 3px no-repeat; margin-top: 0; }
+#Player div { height: 258px; padding-bottom: 8px; background: url(/img/drop-shadow.png) bottom repeat-x; }
+* html #VideoPlayer { background: none; }
+#Player ul.Pagination { top: 4px; }
+
+#Queue { width: 194px; float: right; margin-top: -298px; }
+#Queue h2 { width: 45px; background-position: 0 -20px; margin-top: 6px; }
+#Queue div.MediaContainer { width:  194px; background: #141414; }
+#Queue div.MediaContainer ul li a span.overlay { width:  83px; height: 63px; }
+#Queue div.MediaContainer ul li { width:  84px; height: 63px; }
+#Queue div.MediaContainer ul li img { width: 83px; height: 63px;  }
+
+#Featured { width: 306px; float: left; margin-top: -298px; }
+#Featured div.MediaContainer div.Overlay { width: 306px;}
+#Featured h2 { width: 182px; background-position: 0 0; margin-top: 7px; }
+#Featured div.MediaContainer { width:  306px;  background: #141414; }
+#Featured div.MediaContainer ul { margin-bottom: 14px; }
+#Featured div.MediaContainer ul li a span.overlay { width: 89px; height: 74px; }
+#Featured div.MediaContainer ul li { width:  90px; height: 74px; }
+* html #Featured div.MediaContainer ul li { background: none; }
+#Featured div.MediaContainer ul li img { width: 89px; height: 74px; }
+#Featured ul.Pagination li.Previous a { background-position: -223px 0; }
+#Featured ul.Pagination li.Previous a:hover { background-position: -223px -12px ; }
+#Featured ul.Pagination li.Previous a.disabled { background-position: -223px -24px ; }
+#Featured ul.Pagination li.Next a { background-position: -205px 0; }
+#Featured ul.Pagination li.Next a:hover { background-position: -205px -12px; }
+#Featured ul.Pagination li.Next a.disabled { background-position: -205px -24px; }
+
+
+/* END: Media Content Region */
+
+
+/* BEGIN: Supplemental Info Content Region */
+
+#Supplemental { width: 210px; margin-top: 12px; float: left; }
+#Supplemental div.Section { position: relative; margin-bottom: 15px; }
+#Supplemental div.Section div.MediaContainer { width: 210px; overflow: hidden; background: #141414; position: relative;}
+#Supplemental ul.Pagination { top: 4px; }
+
+#Share h2 { width: 43px; background-position: 0 -80px; }
+#Share ul { width: 210px; height: 72px; padding: 7px 0; background: #141414;}
+#Share ul li { float: left; margin: 1px 1px 0 8px; }
+#Share ul li a { width: 32px; height: 40px; display: block; overflow: hidden;  text-indent: -9999px; background-image: url(/img/bkg.share.jpg); background-repeat: no-repeat; }
+#Share ul li a.twitter { background-position: 0 0; }
+#Share ul li a.twitter:hover { background-position: 0 -40px; }
+#Share ul li a.facebook { background-position: -32px 0; }
+#Share ul li a.facebook:hover { background-position: -32px -40px; }
+#Share ul li a.reddit { background-position: -64px 0; width: 31px;}
+#Share ul li a.reddit:hover { background-position: -64px -40px; }
+#Share ul li a.digg { background-position: -95px 0; width: 31px; position: relative; left: -1px; }
+#Share ul li a.digg:hover { background-position: -95px -40px; }
+#Share ul li a.stumbleupon { background-position: -126px 0; position: relative; left: -1px; }
+#Share ul li a.stumbleupon:hover { background-position: -126px -40px; }
+#Share ul li a.share_this { background-position: -158px 0; }
+#Share ul li a.share_this:hover { background-position: -158px -40px; }
+#Share ul li a.mail { background-position: -190px 0; }
+#Share ul li a.mail:hover { background-position: -190px -40px; }
+
+/* END: Supplemental Info Content Region */
+
+
+/* BEGIN: Buzz Content Region */
+
+#Buzz { width: 722px; margin-top: 12px;float: right; overflow: hidden; }
+
+#Buzz div.Section {  width: 356px; overflow: hidden; margin-bottom: 20px; }
+#Buzz div.Section p.Pagination { position: relative; }
+#Buzz div.Section p.Pagination span.loader { width: 353px; height: 6px; display: none; overflow: hidden; text-indent: -9999px; background: url(/img/bkg.buzz-loader.gif) left top no-repeat; position: absolute; top: -13px; left: 0px; }
+#Buzz div.Section p.Pagination a { width: 89px; height: 20px; display: block; float: right; overflow: hidden; clear: both; background: url(/img/bkg.header-sprite.gif) -69px -40px no-repeat; text-indent: -9999px; margin-right: 12px;}
+#Buzz div.Section p.Pagination a:hover { background-position: -181px -40px; }
+#Buzz div.Section p.Pagination img { position: relative; left: 230px; }
+
+#Buzz div.MediaContainer { width: 353px; margin-bottom: 7px; position: relative; overflow: hidden; background: #141414; }
+#Buzz div.MediaContainer div.Overlay { height: 18px; width: 100%; display: block; position: absolute; bottom: 0; left: 0; background: url(/img/frg.generic-overlay.png) left bottom repeat-x; }
+* html #Buzz div.MediaContainer div.Overlay { display: none; }
+#Buzz div.MediaContainer div { padding: 7px 7px 0; overflow: hidden; }
+#Buzz div.MediaContainer ul { position: relative; margin-bottom: 0; }
+#Buzz div.MediaContainer ul li { width: 339px; margin-bottom: 2px; padding-bottom: 8px; background: #444; overflow: hidden; background: url(/img/drop-shadow.png) left bottom repeat-x; line-height: 1.2; position: relative;}
+* html #Buzz div.MediaContainer ul li { background: none; }
+#Buzz div.MediaContainer ul li:hover,
+#Buzz div.MediaContainer ul li.hover,
+#Buzz div.MediaContainer ul li:hover p,
+#Buzz div.MediaContainer ul li.hover p { color: #fff; cursor: pointer; }
+#Buzz div.MediaContainer ul li p { margin-bottom: 0; padding: 10px; background: url(/img/bkg.buzz-media-item.gif) #3b3b3b; overflow: hidden; border-top: 1px solid #525252; border-left: 1px solid #434343; border-bottom: 1px solid #373737; border-right: 1px solid #c21625;}
+
+#Buzz div.MediaContainer ul li.hulu p { border-right-color: #5fa039; }
+#Buzz div.MediaContainer ul li.client p { border-right-color: #5fa039 !important; }
+#Buzz div.MediaContainer ul li.vw p { border-right-color: #627371; }
+#Buzz div.MediaContainer ul li.windows p { border-right-color: #e8691e; }
+#Buzz div.MediaContainer ul li.bestbuy p { border-right-color: #084a68; }
+
+#Buzz div.MediaContainer ul li.date p { padding: 0; width: 268px; overflow: hidden; height: 55px; margin-left: 74px; }
+#Buzz div.MediaContainer ul li.date span.date { height: 57px; width: 74px; margin-right: 10px;display: block; overflow: hidden; float: left; font-size: 50px; line-height: 57px; text-align: center; color: #fff; text-indent: -9999px; background-image: url(/img/bkg.dates.jpg); background-repeat: no-repeat; position: absolute; top: 0; left: 0;}
+#Buzz div.MediaContainer ul li.date span.month,
+#Buzz div.MediaContainer ul li.date span.year,
+#Buzz div.MediaContainer ul li.date span.day_of_week { display: block; overflow: hidden; text-indent: -9999px; float: left; background-image: url(/img/bkg.month-day-year.jpg); background-repeat: no-repeat;}
+#Buzz div.MediaContainer ul li.date span.month { font-size: 167%; margin-top: 9px; margin-left: 10px; margin-right: 4px; height: 26px;}
+#Buzz div.MediaContainer ul li.date span.year { font-size: 167%; margin-top: 8px; height: 25px;}
+#Buzz div.MediaContainer ul li.date span.day_of_week { font-size: 123.1%; clear: both; margin-left: 10px; height: 21px; }
+
+#Buzz div.MediaContainer ul li.date span.date_1 { background-position: 0 0; }
+#Buzz div.MediaContainer ul li.date span.date_2 { background-position: -75px 0; }
+#Buzz div.MediaContainer ul li.date span.date_3 { background-position: -150px 0; }
+#Buzz div.MediaContainer ul li.date span.date_4 { background-position: -225px 0; }
+#Buzz div.MediaContainer ul li.date span.date_5 { background-position: -300px 0; }
+#Buzz div.MediaContainer ul li.date span.date_6 { background-position: 0 -58px; }
+#Buzz div.MediaContainer ul li.date span.date_7 { background-position: -75px -58px; }
+#Buzz div.MediaContainer ul li.date span.date_8 { background-position: -150px -58px; }
+#Buzz div.MediaContainer ul li.date span.date_9 { background-position: -225px -58px; }
+#Buzz div.MediaContainer ul li.date span.date_10 { background-position: -300px -58px; }
+#Buzz div.MediaContainer ul li.date span.date_11 { background-position: 0 -116px; }
+#Buzz div.MediaContainer ul li.date span.date_12 { background-position: -75px -116px; }
+#Buzz div.MediaContainer ul li.date span.date_13 { background-position: -150px -116px; }
+#Buzz div.MediaContainer ul li.date span.date_14 { background-position: -225px -116px; }
+#Buzz div.MediaContainer ul li.date span.date_15 { background-position: -300px -116px; }
+#Buzz div.MediaContainer ul li.date span.date_16 { background-position: 0 -174px; }
+#Buzz div.MediaContainer ul li.date span.date_17 { background-position: -75px -174px; }
+#Buzz div.MediaContainer ul li.date span.date_18 { background-position: -150px -174px; }
+#Buzz div.MediaContainer ul li.date span.date_19 { background-position: -225px -174px; }
+#Buzz div.MediaContainer ul li.date span.date_20 { background-position: -300px -174px; }
+#Buzz div.MediaContainer ul li.date span.date_21 { background-position: 0 -232px; }
+#Buzz div.MediaContainer ul li.date span.date_22 { background-position: -75px -232px; }
+#Buzz div.MediaContainer ul li.date span.date_23 { background-position: -150px -232px; }
+#Buzz div.MediaContainer ul li.date span.date_24 { background-position: -225px -232px; }
+#Buzz div.MediaContainer ul li.date span.date_25 { background-position: -300px -232px; }
+#Buzz div.MediaContainer ul li.date span.date_26 { background-position: 0 -290px; }
+#Buzz div.MediaContainer ul li.date span.date_27 { background-position: -75px -290px; }
+#Buzz div.MediaContainer ul li.date span.date_28 { background-position: -150px -290px; }
+#Buzz div.MediaContainer ul li.date span.date_29 { background-position: -225px -290px; }
+#Buzz div.MediaContainer ul li.date span.date_30 { background-position: -300px -290px; }
+#Buzz div.MediaContainer ul li.date span.date_31 { background-position: 0 -348px; }
+#Buzz div.MediaContainer ul li.date span.month_jan { width: 85px; background-position: 0px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_feb { width: 95px; background-position: -85px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_mar { width: 67px; background-position: -180px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_apr { width: 49px; background-position: -247px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_may { width: 45px; background-position: -296px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_jun { width: 51px; background-position: -341px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_jul { width: 44px; background-position: -392px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_aug { width: 75px; background-position: -436px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_sep { width: 115px; background-position: -511px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_oct { width: 86px; background-position: -626px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_nov { width: 105px; background-position: -712px 0px; }
+#Buzz div.MediaContainer ul li.date span.month_dec { width: 106px; background-position: -817px 0px; }
+#Buzz div.MediaContainer ul li.date span.year_2005 { width: 51px; background-position: 0px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2006 { width: 50px; background-position: -51px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2007 { width: 50px; background-position: -101px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2008 { width: 51px; background-position: -151px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2009 { width: 51px; background-position: -202px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2010 { width: 47px; background-position: -253px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2011 { width: 43px; background-position: -300px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2012 { width: 48px; background-position: -343px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2013 { width: 47px; background-position: -391px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2014 { width: 47px; background-position: -438px -26px; }
+#Buzz div.MediaContainer ul li.date span.year_2015 { width: 48px; background-position: -485px -26px; }
+#Buzz div.MediaContainer ul li.date span.day_mon { width: 61px; background-position: 0px -51px; }
+#Buzz div.MediaContainer ul li.date span.day_tue { width: 65px; background-position: -61px -51px; }
+#Buzz div.MediaContainer ul li.date span.day_wed { width: 89px; background-position: -126px -51px; }
+#Buzz div.MediaContainer ul li.date span.day_thu { width: 72px; background-position: -215px -51px; }
+#Buzz div.MediaContainer ul li.date span.day_fri { width: 46px; background-position: -287px -51px; }
+#Buzz div.MediaContainer ul li.date span.day_sat { width: 69px; background-position: -333px -51px; }
+#Buzz div.MediaContainer ul li.date span.day_sun { width: 56px; background-position: -402px -51px; }
+ 
+#Twitter { float: left; }
+#Twitter h2 { width: 48px; background-position: -83px -20px; }
+#Twitter div.MediaContainer ul li { position: relative; }
+#Twitter div.MediaContainer ul li p { padding-left: 67px; }
+#Twitter div.MediaContainer ul li:hover a.twi_username,
+#Twitter div.MediaContainer ul li.hover a.twi_username { color: #fff; }
+#Twitter div.MediaContainer ul li img { display: inline; float: left; margin-left: -57px; margin-bottom: -7px; height: 48px; width: 48px;}
+#Twitter div.MediaContainer ul li a.twi_username {  font-size: 116%; color: #afafaf; font-weight: bold; line-height: 1; }
+#Twitter div.MediaContainer ul li abbr { font-size: 85%; clear: right; }
+#Twitter div.MediaContainer ul li span.twi_message { display: block; margin-top: 2px; width: 260px; overflow: hidden; }
+#Twitter div.MediaContainer ul li span.twi_icon_overlay { width: 48px; height: 9px; display: block; position: absolute; top: 50px; left: 11px; background: url(/img/frg.twi-overlay.gif) left top no-repeat; }
+* html #Twitter div.MediaContainer ul li span.twi_icon_overlay { display: none; }
+
+#News { float: right; }
+#News h2 { width: 39px; background-position: -44px -20px; }
+#News div.MediaContainer ul li a { color:  #afafaf; font-size: 116%; font-weight: bold;}
+#News div.MediaContainer ul li:hover a,
+#News div.MediaContainer ul li.hover a { color: #fff; }
+#News div.MediaContainer ul li abbr { font-size: 85%; white-space: nowrap; }
+
+/* END: Buzz Content Region */
+
+
+/* BEGIN: Footer Content Region */
+
+#Footer { width: 982px; margin-left: -11px; clear: both; }
+
+#UtilityLinks { width: 100%; height: 80px; overflow: hidden; margin-left: 20px;}
+#UtilityLinks li { float: left; margin: 27px 12px 0;}
+#UtilityLinks li a { display: block; overflow: hidden; text-indent: -9999px; background-image: url(/img/bkg.header-sprite.gif); background-repeat: no-repeat; }
+#UtilityLinks li a.contact_us { width: 72px; height: 18px; background-position: 0 -103px; margin-top: 6px; }
+#UtilityLinks li a.contact_us:hover { background-position: -108px -120px; }
+#UtilityLinks li a.employment { width: 76px; height: 18px; background-position: -75px -103px; margin-top: 6px; }
+#UtilityLinks li a.employment:hover { background-position: -183px -120px; }
+#UtilityLinks li a.europe { width: 109px; height: 23px; background-position: -45px -79px; }
+#UtilityLinks li a.europe:hover { background-position: 1px -120px; }
+
+#Legal { clear: both; margin-top: 25px; text-align: center; margin: 0 auto; padding:  30px 0 15px; font-size: 85%; }
+
+#Legal li { display: inline; margin: 0 15px; }
+#Legal li a { color: #afafaf; }
+#Legal li a:hover { color: #fff; }
+
+/* END: Footer Content Region */
+
+/* BEGIN: Developers Popup------------------------------ */
+
+.popup #developers { background: #000 url(../img/popups/bkg.developers.gif) 0 0 no-repeat; padding: 13px; height: 214px; width: 568px; }
+.popup #developers h2 { margin-bottom: 20px; }
+.popup #developers span,
+.popup #developers a { display: block; text-indent: -9999px; }
+.popup #developers h2 span { background: transparent url(../img/popups/hdr.developers.gif) 0 0 no-repeat; float: left; height: 17px; width: 75px; }
+.popup #developers h2 a { background: transparent url(../img/popups/btn.close.gif) 0 0 no-repeat; height: 20px; left: 552px; position: relative; width: 15px; }
+.popup #developers p {}
+.popup #developers p a { background: transparent url(../img/popups/lnk.get-it-here.gif) 0 0 no-repeat; height: 16px; width: 83px; }
+
+div.popup span.overlay { width: 100%; height: 100%; position: fixed; top: 0; left: 0; background-color: #000; filter:alpha(opacity=30); opacity: 0.30; -moz-opacity:0.3; z-index: 10000; }
+div.popup div { z-index: 10001; }
+
+.popup #developers { background: transparent url(../img/popups/bkg.developers.jpg) 0 0 no-repeat; padding: 13px; height: 214px; width: 568px; }
+.popup #developers h2 { margin-bottom: 20px; }
+.popup #developers span,
+.popup #developers a { display: block; text-indent: -9999px; }
+.popup #developers h2 span { background: transparent url(../img/popups/hdr.developers.gif) 0 0 no-repeat; float: left; height: 17px; width: 75px; }
+.popup #developers h2 a { background: transparent url(../img/popups/btn.close.gif) 0 0 no-repeat; height: 20px; left: 552px; position: relative; width: 15px; }
+*:first-child+html .popup #developers h2 a { left: 482px;}
+* html .popup #developers h2 a { left: 482px;}
+.popup #developers p {}
+.popup #developers p a { background: transparent url(../img/popups/lnk.get-it-here.gif) 0 0 no-repeat; height: 16px; width: 83px; }
+
+.popup #internal { background: transparent  url(../img/popups/bkg.contact.jpg) 0 0 no-repeat; padding: 13px;  height: 294px; width: 564px; }
+.popup #internal h2 { margin-bottom: 20px; }
+.popup #internal h2 span,
+.popup #internal h2 a { display: block; text-indent: -9999px; }
+.popup #internal h2 span { background: transparent url(../img/popups/hdr.contact-us.gif) 0 0 no-repeat; float: left; height: 16px; width: 75px; }
+.popup #internal h2 a { background: transparent url(../img/popups/btn.close.gif) 0 0 no-repeat; height: 20px; margin-left: 552px; width: 15px; }
+
+.popup #internal li { float: left; display: block; }
+.popup #internal #maps li { padding-left: 20px; padding-bottom: 40px; width: 95px; }
+*:first-child + html .popup #internal #maps li { padding-bottom: 20px; }
+
+.popup #internal #maps li.first { padding-left: 8px; }
+.popup #internal #maps li img { border-right: 1px solid red; display: block; }
+.popup #internal #maps li { padding-left: 20px; width: 95px; }
+
+.popup #internal #contacts { clear: both; }
+.popup #internal #contacts li { padding-left: 30px; width: 115px; }
+.popup #internal #contacts li.first { padding-left: 10px; }
+.popup #internal #contacts a { color: #afafaf; display: block; font-size: 85%; }
+.popup #internal #contacts a:hover { color: red; }
+
+.popup #terms { background: transparent url(../img/popups/bkg.terms.gif) 0 0 no-repeat; padding: 0; height: 480px; width: 712px; text-align: right; }
+.popup #terms h2 { background: transparent url(../img/popups/shdw.top-terms.png) 0 0 no-repeat; position: absolute; height: 48px; width: 697px; z-index: 10002; text-align: left; }
+.popup #terms h2 span,
+.popup #terms h2 a { display: block; text-indent: -9999px; }
+.popup #terms h2 span { background: transparent url(../img/popups/hdr.terms.gif) 0 0 no-repeat; float: left; height: 16px; width: 88px; margin: 12px 0 0 12px; }
+.popup #terms h2 a { background: transparent url(../img/popups/btn.close.gif) 0 0 no-repeat; height: 20px; margin: 12px 0 0 670px; width: 15px; }
+.popup #terms_wrapper { height: 380px; overflow: auto; text-align: left; width: 682px; padding: 50px 15px 50px 15px; z-index: 10001; }
+.popup #terms div.bottom_cap { background: transparent url(../img/popups/shdw.btm-terms.png) 0 0 no-repeat; height: 25px; width: 696px; z-index: 10010; margin-top: -24px; position: absolute; }
+
+/* END:  -------------------------------- */

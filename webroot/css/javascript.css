@@ -1,0 +1,5 @@
+/* ANIMATION TEST */
+
+.staged { position: absolute; top: -9999px; }
+
+#VideoPlayer p { display: none; }

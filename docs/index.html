@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<title>cpbgroup documentation</title>
+    	<link rel="stylesheet" href="css/default.css" type="text/css" />
+    	<link rel="stylesheet" href="css/pygments.css" type="text/css" />
+	</head>
+	<body>
+    	<div class="related">
+      		<h3>Navigation</h3>
+      		<ul>
+        		<li>CPBGroup documentation &#187;</li>
+        		<li>CPBGroup Opensource Book &#187;</li> 
+      		</ul>
+    	</div>  
+	    <div class="document">
+    		<div class="documentwrapper">
+        		<div class="bodywrapper">
+          			<div class="body">
+            			<div class="section" id="advanced-page-templates">
+							<h1>General Documentation<a class="headerlink" href="#general-documentation" title="Permalink to this headline">&#182;</a></h1>
+							<p>In this section you'll learn the basic installation and system requirements that will allow using this product.</p>
+							<div class="section" id="system-requirements">
+								<h2>1. System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">&#182;</a></h2>
+								<ul>
+									<li>Server API: Apache 2.0 Handler </li>
+									<li>Apache Version Apache/2.2.11</li>
+									<li>mod_rewrite enabled</li>
+									<li>mod_headers enabled</li>
+									<li>mod_expires enabled</li>
+									<li>Apache API Version 20051115</li>
+									<li>PHP Version 5.2.8 or greater</li>
+									<li>cURL support enabled</li>
+									<li>MySQL Database Support enabled</li>
+									<li>MySQL Client API version 5.0.51a</li>
+									<li>mysqli.default port 3306</li>
+									<li>ODBC Support enabled</li>
+									<li>Session Support enabled</li>
+								</ul>
+							</div>
+							<div class="section" id="installation">
+								<h2>2. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">&#182;</a></h2>
+								<div class="section" id="download-and-configure-cakephp">
+									<h3>2.1 Download & Configure CakePHP<a class="headerlink" href="#download-and-configure-cakephp" title="Permalink to this headline">&#182;</a></h3>
+									<p>Download &amp; install CakePHP 1.2.5</p>
+									<div class="highlight-python">
+										<pre>
+$ curl -o cake_1.2.5.tar.bz2 http://cakeforge.org/frs/download.php/733/cake_1.2.5.tar.bz2/donation=complete
+$ tar jxfv cake_1.2.5.tar.bz2
+$ mv cake_1.2.5/* /var/www/newd # or your install path
+$ cd /var/www/newd # or your install path
+$ rm -rf app
+$ git clone git://github.com/cpbadmin/newd
+$ vi newd/config/database.php
+										</pre>
+									</div>
+									<p>Update database info in the Cake DB configuration file, newd/config/database.php.</p>
+									<div class="highlight-python">
+										<pre>
+var $default = array(
+	'driver' => 'mysql',
+	'persistent' => false,
+	'host' => '[your_db_host]',
+	'login' => '[your_db_username]',
+	'password' => '[your_db_pass]',
+	'database' => '[your_db_name]',
+	'prefix' => '',
+);
+																			</pre>
+										<p>Configure Apache to point to the the webroot directory in newd.  This setup will depend on your operating system and system setup.  Here's an example using Apache's htconf to configure the vhost.  On OSX you can configure this in /private/etc/apache2/extra/httpd-vhosts.conf</p>
+										<pre>
+&lt;VirtualHost *:80&gt;
+        ServerName newd-local
+        ServerAdmin webmaster@local
+        DocumentRoot /Users/username/Sites/cake/newd/webroot
+        ErrorLog /private/var/log/apache2/newd-error_log
+        CustomLog /private/var/log/apache2/newd-access_log common
+
+        &lt;Directory /Users/username/Sites/cake/newd/webroot&gt;
+                Options FollowSymLinks
+                AllowOverride All
+
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-d
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+        &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+										</pre>
+										<p>To use that configuration, you'll need to point the newd-local domain to your machine.  You can edit your /etc/hosts file to add this entry</p>
+										<pre>
+127.0.0.1		newd-local
+										</pre>
+									</div>
+								</div>
+								<div class="section" id="setup-db">
+									<h3>2.2 Import Database<a class="headerlink" href="#setup-db" title="Permalink to this headline">&#182;</a></h3>
+									<p>Execute in your mysql console:</p> 
+									<div class="highlight-python"><pre>mysql> create database newd;</pre></div>
+									<p>Import /sql/database.sql to your database.</p>
+									<div class="highlight-python">
+										<pre>
+mysql -u [your_db_username] -p newd &lt; newd/config/sql/database.sql
+										</pre></div>
+								</div>
+								<div class="section" id="admin-tool">
+									<h3>2.3 Admin Tool<a class="headerlink" href="#admin-tool" title="Permalink to this headline">&#182;</a></h3>
+
+									<p>It is available at http://[site_url]/admin. Use admin/admin to login and change your password.</p>
+								</div>								
+								<div class="section" id="add-topics">
+									<h3>2.4 Add Topics<a class="headerlink" href="#add-topics" title="Permalink to this headline">&#182;</a></h3>
+									<p>Topics are the main sections of your site, if you're tracking pet buzz, your topics might be "Dogs", "Cats", and "Llamas".
+									<p><strong>Insert topics using admin tool:</strong></p>
+									<p>Enter a full version of the topic. Example: Dogs</p>
+									<p>Enter a short version of the topic. Do not use spaces in the name. Use "-" instead. Example: jack-russel</p>
+									<p>The navIcon is not used in the current release, you can leave it blank.</p>
+									<p>You'll need to update the site navigation manually, in views/layouts/default.ctp</p>
+									<pre>
+&lt;ol id=&quot;Nav&quot;&gt;
+	&lt;li class=&quot;dogs active&quot;&gt;
+		&lt;h1&gt;
+			&lt;a href=&quot;/&quot;&gt;Dogs&lt;/a&gt;
+		&lt;/h1&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;/topics/cats&quot;&gt;Cats&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;/topics/llamas&quot;&gt;Llamas&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+									</pre>
+								</div>
+								<div class="section" id="add-datafeeds">
+									<h3>2.5 Add Datafeeds (optional)<a class="headerlink" href="#add-datafeed" title="Permalink to this headline">&#182;</a></h3>
+									<p>Newd runs a series of web crawlers that go out into the web and pull back content from data feeds.  A data feed can be anything you want, we've included feeds for twitter, youtube, Google News, blogs, Bing News, articles. If you would like to create a new one, refer to Ch.3 (<a href="#create-new-datafeed">Extras</a>).</p>
+								</div>
+								<div class="section" id="add-modules">
+									<h3>2.6 Add Modules (optional)<a class="headerlink" href="#add-modules" title="Permalink to this headline">&#182;</a></h3>
+									<p>Modules are the blocks of content displayed in Newd.  They can get their content from a single data feed or they can aggregate several feeds together.  The Twitter module grabs it's content just from the Twitter data feed, while the Articles module pulls in a mix from Bing News, Google News, and Blogs. There are several modules already available: youtube, news, twitter, jobs, freelance. If you would like to create a new one, refer to Ch.3 (<a href="#create-new-module">Extras</a>)</p>
+								</div>
+								<div class="section" id="add-tags">
+									<h3>2.7 Add Tags<a class="headerlink" href="#add-tags" title="Permalink to this headline">&#182;</a></h3>
+									<p>
+										Tags are used by crawlers to pull in data to be displayed on the site.  Each Topic will have can have many tags that the crawlers will use to search the web.  If you want the Dogs topic to pull in everything they can find about Labradors and Boston Terriers, those are the tags you'll want to assign.  You can test keywords straight from the web.  If a search a Bing News for "Boston Terrier" gives you good results, that tag will probably be right.  You can exclude a keyword with a '-' sign in front of the last term.
+										<br />
+										<br />Here are some examples:
+										<ul>
+											<li>"jack russell" terrier -norwich</li>
+											<li>labrador</li>
+											<li>"[phrase]" [word] -[word]</li>
+										</ul>
+										<strong>Insert the tags using admin tool:</strong>
+										<p>Enter name. It has to be a meaningful tag definition. See examples above.</p>
+										<p>Enter the topic_id of the topic that this tag belongs to.</p>
+										<p>type is not used. Should be set to 'client' by default.</p>
+										<p>rating is not used. Should be set to any 1-4 digit integer.</p>
+										<p>Enter datafeed_ids. List all datafeeds that this tag should be used with. Example: 1,2,3,4, This entry will make feeds with ids 1,2,3,4 use this tag when it crawls.</p>
+										<p>Enter status.</p>
+									</p>
+								</div>
+								<div class="section" id="start-crawlers">
+									<h3>2.8 Start Crawlers<a class="headerlink" href="#start-crawlers" title="Permalink to this headline">&#182;</a></h3>
+									<p>
+										Reference Section 3.1.5 to learn how to start crawlers. [FEED_NAME] is either new crawler name or existing crawlers listed below.
+										<br><br>Existing crawlers:
+										<ul>
+											<li>news</li>
+											<li>blogs</li>
+											<li>twitter</li>
+											<li>youtube</li>
+											<li>bingnews</li>
+										</ul>
+										You can make new crawlers. Reference 3.1.
+									</p>
+								</div>
+								<div class="section" id="setup-caching">
+									<h3>2.9 Setup Caching (Optional)<a class="headerlink" href="#setup-caching" title="Permalink to this headline">&#182;</a></h3>
+									<p>If you're running Apache 2.2.x it is highly recommended you use mod_cache to cache rendered pages to disk.  If you have an older version of apache or do not have mod_cache, you can use the component cache helper.  
+									To do so, edit the .htaccess file in [application folder]/[application name]/ and uncomment:
+									<div class="highlight-python"><pre>
+#    RewriteCond %{REMOTE_ADDR} !YOUR_CACHEREPLACEPHP_IP
+#    RewriteCond %{DOCUMENT_ROOT}/webroot/cache/$1/index.html -f
+#    RewriteRule ^(.*)$ /webroot/cache/$1/index.html [L]
+									</pre></div>
+									<p>Replacing YOUR_CACHEREPLACEPHP_IP with the IP your webserver would see for a request coming from itself.  You'll then need to run the cacheReplace.php script in the background.
+									Navigate to your [application folder]/[application name]/webroot/cache/ and edit cacheReplace.php changing the internal host reference to be one which will access your site</p>
+									</p>
+									<div class="highlight-python"><pre>
+$localhost = 'http://YOURLOCALHOST';   
+									</pre></div>
+									<p>Execute:</p>
+									<div class="highlight-python"><pre>./cacheReplace.php &gt;&gt; /dev/null 2>&1 &</pre></div>
+								</div>
+								<div class="section" id="setup-permissions">
+									<h3>2.10 Setup Permissions<a class="headerlink" href="#setup-permissions" title="Permalink to this headline">&#182;</a></h3>
+									<p>
+										<strong>1. Set Permissions on the following folders/subfolders: </strong>
+									</p>
+									<ul>
+										<li>Webroot/Cache/ Read-Write </li>
+  										<li>tmp/ Read-Write </li>
+									</ul>
+								</div>
+								<div class="section" id="enjoy">
+									<h3>2.11 Enjoy!<a class="headerlink" href="#enjoy" title="Permalink to this headline">&#182;</a></h3>
+								</div>
+							</div>
+							<div class="section" id="extras">
+								<h2>3. Extras<a class="headerlink" href="#extras" title="Permalink to this headline">&#182;</a></h2>
+								<div class="section" id="create-new-datafeed">
+									<h3>3.1 Create New Datafeed<a class="headerlink" href="#create-new-datafeed" title="Permalink to this headline">&#182;</a></h3>
+									<p><strong>1. insert a datafeed using admin tool:</strong></li></p>
+									<p>Choose a meaningful name. Example: twitter, blogs, technorati, etc. If you have to use 2 or more words, use camel case. Example: hugeMonkeys.</p>
+									<p>Select contentType. Possible values: url, plaintext, html, xml.</p>
+									<p>Enter updateFreqInMinutes. It must be an integer.</p>
+									<p>defaultTags are not used.</p>
+									<p>Enter authType. Possible values: none, htauth, apikey.</p>
+									<p>Enter authUserName.</p>
+									<p>Enter authPassword.</p>
+									<p>Enter crawlerStatus. It needs to be set to 'none'. Crawler will change it to 'crawling' when it starts running.</p>
+									<p>Enter sources. Set it to the datafeed ids of additional sources. Example: if twitter has datafeed_id = 1, and blogs has datafeed_id=2. 
+  									We would like to create a new datafeed named monkeys, which we'd like to include 2 above mentioned feeds, then set 
+  									'sources' to '1,2'. It will allow you to have an independent crawler (optional) for feed named 'monekys', but also it'll 
+  									pull data from 2 other feeds.</p>
+									<p><strong>2. add datasource directive to /cake/cpbgroup/config/database.php </strong></p>
+									<p>Example:</p>
+									<div class="highlight-python"><pre>var $[datafeed_name] = array( 'datasource' => '[datafeed_name]' );</pre></div>
+									<p><strong>3. create /cake/cpbgroup/models/datasources/[feed_name]_source.php</strong></p>
+									<p>Method search should perform your searching, parsing, and returning an array of items ready for insertion.</p>
+									<p>Example:</p>
+									<div class="highlight-python"><pre>
+	class BingnewsSource extends DataFeed{
+	  
+	  var $xml;
+	  var $config;
+	 
+	    var $description = "Bing RSS Feed";
+	  
+		function __construct($config=null) {
+			if($config != null) {
+				parent::__construct($config);
+			}
+		}
+	    
+		function search($search, $maxresults=20, $offset=1, $sortby='relevance') {
+			
+			// 1 - searching
+			$urlSearch = urlencode($search);
+			$feedUrl = 'http://www.bing.com/news/search?q='.$urlSearch.'&FORM=BNFD&format=rss';
+			$return = array();
+			$item = array();
+			$doc = new DOMDocument();
+			$doc-&gt;load($feedUrl);
+			
+			// 2 - parsing
+			foreach ($doc-&gt;getElementsByTagName('item') as $node) {
+				$datePublished = strtotime($node-&gt;getElementsByTagName('pubDate')-&gt;item(0)-&gt;nodeValue);
+				$description = $node-&gt;getElementsByTagName('description')-&gt;item(0)-&gt;nodeValue;
+				$thumb = "";
+				$description = $node-&gt;getElementsByTagName('description')-&gt;item(0)-&gt;nodeValue;
+				$regexp = "&lt;img\s[^&gt;]*src=(\"??)([^\" &gt;]*?)\\1[^&gt;]*&gt;(.*)\/&gt;";
+				if(preg_match_all("/$regexp/siU", $description, $matches, PREG_SET_ORDER)) {
+					$thumb = $matches[0][2];
+				}
+				$full_title = $node-&gt;getElementsByTagName('title')-&gt;item(0)-&gt;nodeValue;
+				$divider_pos = strrpos($full_title,"-");
+				$title = trim(substr($full_title,0,$divider_pos));
+				$author = trim(substr($full_title,$divider_pos+1));
+				$item["id"] = $node-&gt;getElementsByTagName('link')-&gt;item(0)-&gt;nodeValue;
+				$item["published"] = date("Y-m-d H:i:s", $datePublished);
+				$item["content"] = strip_tags($description);
+				$item["thumbnail"] = $thumb;
+				$item["title"] = $title;
+				$item["author"] = $author;
+				$item["rating"] = 0;
+				$return[] = $item;
+			}
+			
+			// 3 - returning array ready for insertion		
+			return $return;
+		}
+	    
+	}
+									</pre></div>
+								<p><strong>4. create /cake/cpbgroup/datasource_crawlers/[feed_name].php</strong></p>   
+									<p>[feed_class] needs to start with a capital letter. [feed_name] should be same as [feed_class], but all lower case.</p>
+								<p>Example:</p>
+								<div class="highlight-python">
+									<pre>	
+require_once('controllers/datasource_crawler.php');
+
+class [feed_class] extends DatasourceCrawler
+{
+	function __construct() {
+	}
+
+	function crawlFeed($updatedSince = '', $tag = '', $datafeedId = 0) {
+		$this-&gt;[feed_class] =& ConnectionManager::getDataSource("[feed_name]");
+		$results = $this-&gt;[feed_class]-&gt;search($tag);
+		return $this-&gt;insertDatarows($updatedSince, $tag, "[feed_name]", $datafeedId, $results);
+	}
+}
+
+$crawler = new [feed_class]();								
+								</pre>
+							</div>
+							<p><strong>5. Start it</strong></p> 
+							<p>There are 2 ways you can run crawlers: cron or non-stop.<br /><br />
+								CRON: Not written.<br /><br />
+								NON-STOP:You need to execute the following command from shell/command-prompt:
+							</p>
+							<div class="highlight-python"><pre>[ROOT].[DS].&quot;cake&quot;.[DS].&quot;console&quot;.[DS].&quot;cake -app &quot;.[ROOT].[DS].[APP_DIR].[DS].&quot; datafeed_daemon main [FEED_NAME] &gt;&gt; [LOG_PATH] 2&gt;&amp;1 &amp;	</pre></div>
+							<p>
+								Key:<br />		. - concatination symbol<br />		[ROOT] - full path to your cake installation<br /> [DS] - directory separartor<br />		[APP_DIR] - your application directory<br />		[FEED_NAME] - name of your feed
+							</p>
+						</div>
+						<div class="section" id="create-new-module">
+							<h3>3.2 Create New Module<a class="headerlink" href="#create-new-module" title="Permalink to this headline">&#182;</a></h3>
+							<p><strong>1. insert a module using admin tool:</strong></p>
+							<p>Create a meaningful name, like: jobs,twitter,blogs,news, etc.</p>
+							<p>'status' is not currently used.</p>
+							<p>'minSize' is not currently used.</p>
+							<p>'maxSize' is not currently used.</p>
+							<p>'updateType' is not currently used.</p>
+							<p>'updateid' is currently same as 'id'.</p>
+							<p>Set a refresh time in seconds.</p>
+							<p>Set a datafeed id for this module.</p>
+							<p>Not used. Currently set to the 'name'.</p>
+							<p>'datafeed_tag_restriction' is not currently used.</p>
+							<p>Set a name of this module when used in a layout. Example: if you set name to 'monkeys', you will use %%monkeys%% in your layouts.</p>
+							<p>'created' should be a timestamp of now.</p>
+							<p>'modified' should be a timestamp of when it was modified.</p>
+							<p><strong>2. add the module to json rendering routine</strong></p>
+							<p>Each module has 2 rendering types: html and json. Html is explained in next step. to get a json render, you need to open /cake/cpbgroup/controllers/modules_controller.php and add a conditional: </p>
+							<div class="highlight-python">
+								<pre>	
+	else if($name == "[module_name]") {
+		$post = array(
+			"[field]"=&gt;"[value]",
+			"client"=&gt;$item["Datarow"]["topicName"],
+			...
+		);
+	}
+	
+	to method function getModuleJSON($name,$tag,$client,&$json, $options)
+	
+	Each $item consists of:
+	
+	[Datarow] =&gt; Array
+	    (
+	        [id] =&gt; 119619
+	        [datafeed_id] =&gt; 5
+	        [topicName] =&gt; Dogs
+	        [published] =&gt; 2009-06-21 15:36:00
+	        [articleId] =&gt; Lisa and Jackson
+	        [title] =&gt; Lisa and Jackson
+	        [content] =&gt; http://www.dogslife.com/windows/watchtheads/video/lisaandjackson/?playBig=false
+	        [thumb] =&gt; /img/dogs/_0000s_0002_LisaandJackson.jpg
+	        [author] =&gt; image
+	        [rating] =&gt; 0
+	        [created] =&gt; 2009-06-18 15:36:00
+	        [modified] =&gt; 2009-06-18 15:36:00
+	        [tags] =&gt; terrier
+	        [cpbTags] =&gt; terrier
+	        [flagged] =&gt; false
+	        [blocked] =&gt; false
+	    )
+	
+	[Datafeed] =&gt; Array
+	    (
+	        [id] =&gt; 5
+	        [name] =&gt; bubble
+	        [contentType] =&gt; url
+	        [updateFreqInMinutes] =&gt; 1
+	        [defaultTags] =&gt; 
+	        [authType] =&gt; none
+	        [authUserName] =&gt; 
+	        [authPassword] =&gt; 
+	        [created] =&gt; 2009-06-16 15:35:40
+	        [modified] =&gt; 2009-06-16 15:35:44
+	        [crawlerStatus] =&gt; none
+	        [sources] =&gt; 
+	    )
+								</pre>
+							</div>
+							<p><strong>3. create a view at /cake/cpbgroup/views/modules/[module_name]/[module_name].ctp</strong></p>
+							<p>Use other modules as a template.</p>
+						</div>
+					</div>
+					<div class="section" id="conclusion">
+						<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">&#182;</a></h2>
+						<p>I hope you have fun with it!</p>
+					</div>
+				</div>
+          	</div>
+        </div>
+     </div>
+     <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="http://docs.zope.org/zope2/index.html">Table Of Contents</a></h3>
+            <ul>
+                <li><a class="reference external" href="">General Documentation</a>
+                	<ul>
+                        <li><a class="reference external" href="#system-requirements">1. System Requirements</a></li>
+                        <li><a class="reference external" href="#installation">2. Installation</a>
+                        	<ul>
+                                <li><a class="reference external" href="#download-and-configure-cakephp">2.1 Download & Configure CakePHP</a></li>
+							    <li><a class="reference external" href="#setup-db">2.2 Setup Database</a></li>
+							    <li><a class="reference external" href="#admin-tool">2.3 Admin Tool</a></li>
+							    <li><a class="reference external" href="#add-topics">2.4 Add Topics</a></li>
+							    <li><a class="reference external" href="#add-datafeeds">2.5 Add Datafeeds (optional)</a></li>
+							    <li><a class="reference external" href="#add-modules">2.6 Add Modules (optional)</a></li>
+							    <li><a class="reference external" href="#add-tags">2.7 Add Tags</a></li>
+							    <li><a class="reference external" href="#start-crawlers">2.8 Start Crawlers</a></li>
+							    <li><a class="reference external" href="#setup-caching">2.9 Setup Caching</a></li>
+							    <li><a class="reference external" href="#setup-permissions">2.10 Setup Permissions</a></li>
+							    <li><a class="reference external" href="#enjoy">2.11 Enjoy!</a></li>
+							</ul>
+						</li>
+						<li><a class="reference external" href="#extras">3. Extras</a>
+							<ul>
+								<li><a class="reference external" href="#create-new-datafeed">Create New Datafeed</a></li>
+                                <li><a class="reference external" href="#create-new-module">Create New Module</a></li>
+                            </ul>
+						</li>
+                    </ul>
+				</li>
+                <li><a class="reference external" href="#conclusion">Conclusion</a></li>
+
+			</ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li>CPBGroup Website Documentation »</li>
+          <li>The CPBGroup Opensource Website Book »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      © Copyright 2009, cpbgroup.
+    </div>
+  </body></html>

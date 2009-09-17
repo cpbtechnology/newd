@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+#################################################################################
+#    If mod_cache on apache 2.2.x is unavailable, you can use cacheReplace.php
+#    Replace YOUR_CACHEREPLACEPHP_IP with the origin IP so that it won't receive
+#    the cached copy. Please see docs for more details.
+#
+#    RewriteCond %{REMOTE_ADDR} !YOUR_CACHEREPLACEPHP_IP
+#    RewriteCond %{DOCUMENT_ROOT}/webroot/cache/$1/index.html -f
+#    RewriteRule ^(.*)$ /webroot/cache/$1/index.html [L]
+#################################################################################
+
+    RewriteRule    ^$    webroot/    [L]
+    RewriteRule    (.*) webroot/$1    [L]
+ </IfModule>
+ 
+ php_value memory_limit 16M
