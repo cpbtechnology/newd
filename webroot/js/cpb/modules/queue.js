@@ -103,7 +103,6 @@ CPB.queue.bindLinksToPlayer = function() {
 		$this.click(function(ev) {
 			ev.preventDefault();
 			loadVideoById(yt_id);
-			return false;
 		});
 	});
 };
