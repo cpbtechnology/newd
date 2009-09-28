@@ -109,6 +109,7 @@ CPB.queue.bindLinksToPlayer = function() {
 
 CPB.queue.createPlayList = function() {
 	var links = $("#youtube_module .MediaContainer ul li a"),
+			client = $('#youtube_module .MediaContainer ul li').attr('class'),
 			videos = [],
 			video = {};
 
@@ -117,7 +118,7 @@ CPB.queue.createPlayList = function() {
 		    title = $this.attr('title'),
 		    yt_id = CPB.queue.extractVideoIdFromUrl($this.attr('href'));
 		
-		videos.push({'title': title, 'id': yt_id});
+		videos.push({'client': client, 'title': title, 'id': yt_id});
 	});
 	return videos;
 };
