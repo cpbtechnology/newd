@@ -33,7 +33,9 @@ CPB.twitter = new CPB.remoteModule('twitter', {
 			var $this = $(this);
 		});
 		$('#Twitter .MediaContainer ul li').live('click', function() {
-			$(this).find('a.twi_username').trigger('click');
+			var $this = $(this);
+			window.open($this.find('a.twi_username').attr('href'));
+			return false;
 		});
 		CPB.twitter.onLoad();
 	}
