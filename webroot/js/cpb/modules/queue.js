@@ -146,7 +146,7 @@ CPB.queue.view.partial.entries = function(data) {
 	var entries = '';
 	for(var i in data) {
 		var entry =	'<li class="{topic}">' +
-								'<a href="http://www.youtube.com/watch?v={video_id}">' +
+								'<a href="http://www.youtube.com/watch?v={video_id}" title=\'{title}\'>' +
 								'<img src="{image_url}" alt=\'{title}\' width="84" height="63"/>' +
 								'<span class="overlay"></span>' +
 								'</a>' +
