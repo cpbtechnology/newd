@@ -131,6 +131,11 @@ CPB.queue.view.paginate = function(data) {
 
 CPB.queue.view.reload = function(data) {
 	CPB.media.reload(CPB.queue.view.partial.entries(data.posts), '#Queue div.MediaContainer', '#Queue div.MediaContainer ul', CPB.queue.paginateNextBindPoint, CPB.queue.paginatePreviousBindPoint, CPB.queue.settings.visible, CPB.queue.settings.height, CPB.queue.settings.offset, function() {
+		if($('#Queue div.MediaContainer ul li').size() <= CPB.queue.settings.visible) {
+			$('#Queue .Pagination a').addClass('disabled');
+		} else {
+			$('#Queue .Pagination .Next a').removeClass('disabled');
+		}
 		var videos = CPB.queue.createPlayList();
 		setVideoData(videos);
 		CPB.queue.bindLinksToPlayer();
