@@ -21,7 +21,7 @@
 		}
 		
 		$author = $real_name;
-		$content = $row['Datarow']['content'];
+		$content = str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($row['Datarow']['content']));
 		$pattern = "/((ftp|http|https|file):\/\/[\S]+(\b|$))/";
 		$replacement = "<a href='$1' class='my_link' target='_blank'>$1</a>";
 		$content = preg_replace($pattern,$replacement,$content);
