@@ -28,6 +28,11 @@ CPB.featured.view.paginate = function(data) {
 
 CPB.featured.view.reload = function(data) {
 	CPB.media.reload(CPB.featured.view.partial.entries(data.posts), '#Featured div.MediaContainer', '#Featured div.MediaContainer ul', CPB.featured.paginateNextBindPoint, CPB.featured.paginatePreviousBindPoint, CPB.featured.settings.visible, CPB.featured.settings.height, CPB.featured.settings.offset, function() {
+		if($('#Featured div.MediaContainer ul li').size() <= CPB.featured.settings.visible) {
+			$('#Featured .Pagination a').addClass('disabled');
+		} else {
+			$('#Featured .Pagination .Next a').removeClass('disabled');
+		}
 	});
 };
 
