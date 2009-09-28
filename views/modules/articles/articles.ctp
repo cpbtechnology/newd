@@ -7,9 +7,9 @@
 	$count = 0;
 	$dates = array(); 
 	foreach ($articless as $row) {
-		$articleTitle = $row['Datarow']['title'];
-		$articleUrl = substr($row["Datarow"]["articleId"], strrpos($row["Datarow"]["articleId"], "http://") , 300);
-		$articleDescription = $row['Datarow']['content'];
+		$articleTitle = str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($row['Datarow']['title']));
+		$articleUrl = substr(htmlentities($row["Datarow"]["articleId"]), strrpos($row["Datarow"]["articleId"], "http://") , 300);
+		$articleDescription = str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($row['Datarow']['content']));
 		$articledate = date('M d, Y', strtotime($row['Datarow']['published']));
 		$author = $row['Datarow']['author'];
 		$id = $row['Datarow']['id'];
