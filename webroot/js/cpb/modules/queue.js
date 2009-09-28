@@ -66,9 +66,16 @@ CPB.queue.initializeYouTubePlayer = function() {
 								 scale: "noscale",
 								 wmode: "opaque" },
 			attributes = {},
-			player_path = "/swf/ASYouTubeWrapper.swf";
-
-	swfobject.embedSWF(player_path, CPB.queue.swfid, "430", "260", "9.0.115", 'playerProductInstall.swf', flashvars, params, attributes);
+			player_path = "/swf/ASYouTubeWrapper.swf",
+			flash_version = swfobject.getFlashPlayerVersion();
+			
+	if(flash_version.major > 9) {
+		swfobject.embedSWF(player_path, CPB.queue.swfid, "430", "260", "9.0.115", 'playerProductInstall.swf', flashvars, params, attributes);
+	} else {
+		$('#VideoPlayer p.no_flash').show().html('<a href="http://get.adobe.com/flashplayer/">You must have Flash and Javascript enabled to watch videos.</a>');
+	}
+	
+	
 };
 
 CPB.queue.loadFirstVideo = function() {
