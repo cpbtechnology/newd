@@ -97,15 +97,3 @@ jsCss.rel = 'stylesheet';
 jsCss.href = '/css/javascript.css';
 jsCss.type = 'text/css';
 document.getElementsByTagName('head')[0].appendChild(jsCss);
-
-
-if ( window.addEventListener ) {
-	var kkeys = [], konami = "82";
-	window.addEventListener("keydown", function(e){
-		kkeys.push( e.keyCode );
-		if ( kkeys.toString().indexOf( konami ) >= 0 ) {
-			kkeys = [];
-			CPB.twitter.update();
-		}
-	}, true);
-}
