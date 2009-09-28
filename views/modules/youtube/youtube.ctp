@@ -10,11 +10,11 @@
 		</div>
 	</div>
 	<ul class="Pagination">
-		<li class="Next">
-			<a href="#">Next</a>
-		</li>
 		<li class="Previous">
 			<a href="#">Previous</a>
+		</li>
+		<li class="Next">
+			<a href="#">Next</a>
 		</li>
 	</ul>
 </div>
