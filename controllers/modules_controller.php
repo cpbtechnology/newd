@@ -192,7 +192,7 @@ class ModulesController extends AppController {
 						"protected"=>false
 					),
 					"id"=>$item["Datarow"]["id"],
-					"text"=>$item["Datarow"]["content"],
+					"text"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["content"])),
 					"created_at"=>$date_twitter,
 					"truncated"=>false,
 					"status_id"=>substr($item["Datarow"]["articleId"], strrpos($item["Datarow"]["articleId"], "statuses")+9 , 60) 
@@ -201,8 +201,8 @@ class ModulesController extends AppController {
 			else if($name == "youtube" || $name == "queue") {
 				$post = array(
 					"topic"=>$this->Topic->getTopicAbbr($topic),
-					"title"=>$item["Datarow"]["title"],
-					"text"=>$item["Datarow"]["content"],
+					"title"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["title"])),
+					"text"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["content"])),
 					"truncated"=>false,
 					"image_url"=>$item["Datarow"]["thumb"],
 					"service"=>"youtube",
@@ -224,8 +224,8 @@ class ModulesController extends AppController {
 						"name"=>$item["Datarow"]["author"],
 						"location"=>$location
 					),
-					"title"=>$item["Datarow"]["title"],
-					"text"=>$item["Datarow"]["content"],
+					"title"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["title"])),
+					"text"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["content"])),
 					"created_at"=>$date_published,
 					"truncated"=>false,
 					"location"=>$item["Datarow"]["articleId"],
@@ -235,10 +235,10 @@ class ModulesController extends AppController {
 			else if($name == "bubble" || $name == "featured") {
 				$post = array(
 					"topic"=>$this->Topic->getTopicAbbr($topic),
-					"title"=>$item["Datarow"]["title"],
+					"title"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["title"])),
 					"text"=>"",
 					"truncated"=>false,
-					"location"=>$item["Datarow"]["content"],
+					"location"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["content"])),
 					"image_url"=>$item["Datarow"]["thumb"],
 					"id"=>$item["Datarow"]["id"]
 				);
@@ -246,8 +246,8 @@ class ModulesController extends AppController {
 			else if($name == "jobs") {
 				$post = array(
 					"topic"=>$this->Topic->getTopicAbbr($topic),
-					"title"=>$item["Datarow"]["title"],
-					"content"=>$item["Datarow"]["content"],
+					"title"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["title"])),
+					"content"=>str_replace(array('>','<'),array('&gt;','&lt;'),strip_tags($item["Datarow"]["content"])),
 					"truncated"=>false,
 					"position"=>$item["Datarow"]["thumb"],
 					"job_type"=>$item["Datarow"]["author"],
@@ -261,7 +261,9 @@ class ModulesController extends AppController {
 		}
 		
 		//sort
-		krsort($output);
+		if($name!="youtube" && $name!="queue") {
+			krsort($output);
+		}
 		
 		foreach($output AS $date=>$posts) {
 		
