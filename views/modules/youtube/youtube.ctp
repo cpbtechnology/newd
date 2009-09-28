@@ -2,7 +2,11 @@
 	<h2>[HEADER]</h2>
 	<div>
 		<div id="VideoPlayer">
-			<p>You must have Flash and Javascript enabled to watch videos.</p>
+			<p class="no_flash">
+				<noscript>
+					<a href="http://get.adobe.com/flashplayer/">You must have Flash and Javascript enabled to watch videos.</a>
+				</noscript>
+			</p>
 		</div>
 	</div>
 	<ul class="Pagination">
