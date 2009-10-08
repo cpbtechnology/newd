@@ -35,7 +35,7 @@ CPB.defaults = {
 CPB.modules = [];
 CPB.reload = function(event, data) {
 	CPB.topic = data.path == '/' ? '/topics/cpb' : data.path;
-	var topic_shortname = CPB.topic.replace(/^\/topics\//,'');
+	var topic_shortname = CPB.topic.replace(/^#!/,'');
 	$("#PageWrapper").removeAttr("class").addClass(topic_shortname);
 
 	CPB.deepLinking.currentLocation = window.location.hash = CPB.hashPath(CPB.topic);
@@ -74,7 +74,7 @@ CPB.initOnReady = function(reloadBindPoint) {
 	$(reloadBindPoint).bind('mousedown.reload', function(event) {
 		event.preventDefault();
 		if(!$(this).closest('li').hasClass('active')) {
-			var reloadUrl = $(this).attr('href');
+			var reloadUrl = $(this).attr('href').replace('#!', '/topics/');
 			CPB.reload(event, { path: reloadUrl });
 		}
 	});

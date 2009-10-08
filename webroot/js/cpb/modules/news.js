@@ -111,7 +111,7 @@ CPB.news.view.partial.posts = function(data) {
 
 CPB.news.view.partial.date = function(data) {
 	var date =	'<li class="date">' +
-							'<p class="' + window.location.hash.slice(1) + '">' +
+							'<p class="' + window.location.hash.slice(2) + '">' +
 							'<span class="date date_{date}">{date}</span>' +
 							'<span class="month month_{month_abbr}">{month}</span>' +
 							'<span class="year year_{year}">{year}</span>' +

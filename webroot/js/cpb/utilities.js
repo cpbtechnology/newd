@@ -47,7 +47,10 @@ CPB.tokenize = function(key, object, addSlashes) {
 };
 
 CPB.hashPath = function(str) {
-	return '#'+str.replace(/^\/topics\//, '');
+	if(str.indexOf('#!') == 0) {
+		return str;
+	}
+	return '#!'+str.replace(/^\/topics\//, '');
 };
 
 CPB.timestamp = function() {
@@ -60,14 +63,14 @@ CPB.timestamp = function() {
 // function can only be called on first load.
 CPB.hashHandler = function() {
 	var default_nav = $("Nav > li a"),
-	    default_hash = '#cpb',
+	    default_hash = '#!newd',
 	    topic_path,
 	    reloadLink;
 
-	if (!(/^#/.test(window.location.hash))) {
+	if (!(/^#!/.test(window.location.hash))) {
 		window.location.hash = default_hash;
 	} else if (window.location.hash != default_hash){
-		topic_path = '/topics/' + window.location.hash.replace(/^#/, '');
+		topic_path = window.location.hash;
 		$reloadLink = $("#Nav a[href=" + topic_path + "]");
 		$reloadLink.trigger('mousedown');
 	}
@@ -109,12 +112,12 @@ CPB.updateShareLinks = function() {
 	});
 
 	function _clearHash(link) {
-		link.href = link.href.replace(/#[^\W]*/,'');
+		link.href = link.href.replace(/#![^\W]*/,'');
 	}
 
 	function _updateHash(link, hash) {
 		if(/#/.test(link.href)) {
-			link.href = link.href.replace(/#[^\W]*/, hash);
+			link.href = link.href.replace(/#![^\W]*/, hash);
 		} else {
 			// TODO: match site_url in the href, currently assumes URLs end with link to site.
 			link.href += hash;
@@ -128,7 +131,7 @@ CPB.updatePageTitle = function() {
 
 	var title = document.getElementsByTagName("title")[0],
 			divider = " : ",
-			current_topic = window.location.hash.replace(/#/, ""),
+			current_topic = window.location.hash.replace(/#!/, ""),
 			default_title = "Newd";
 
 	if("" == current_topic) {

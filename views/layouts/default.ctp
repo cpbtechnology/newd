@@ -52,7 +52,7 @@
 				<ol id="Nav">
 					<li class="cpb active">
 						<h1>
-							<a href="/">Newd</a>
+							<a href="#!newd">Newd</a>
 						</h1>
 					</li>
 				</ol>
