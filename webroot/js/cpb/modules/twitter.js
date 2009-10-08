@@ -143,7 +143,7 @@ CPB.twitter.view.partial.posts = function(data) {
 
 CPB.twitter.view.partial.date = function(data) {
 	var date =	'<li class="date">' +
-							'<p class="' + window.location.hash.slice(2) + '">' +
+							'<p class="' + window.location.hash.slice(1) + '">' +
 							'<span class="date date_{date}">{date}</span>' +
 							'<span class="month month_{month_abbr}">{month}</span>' +
 							'<span class="year year_{year}">{year}</span>' +

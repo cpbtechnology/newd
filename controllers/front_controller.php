@@ -31,10 +31,6 @@ class FrontController extends AppController {
 	}
 
 	function index($module="all") {
-		if(isset($_GET['_escaped_fragment_'])) {
-			$this->params['topic'] = $_GET['_escaped_fragment_'];
-		}
-		
 		$topic = isset($this->params['topic']) ? $this->params['topic'] : 'cpb';
 
 		if ('json' == $this->params['url']['ext']) {
